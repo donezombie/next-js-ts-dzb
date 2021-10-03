@@ -1,10 +1,11 @@
-import useGetTodoList from "hooks/todos/useGetTodoList";
-import { List } from "interfaces";
-import { TodoModel } from "interfaces/models";
-import type { NextPage } from "next";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTodosList } from "redux/actions";
+import type { NextPage } from "next";
+import Link from "next/link";
+import useGetTodoList from "hooks/todos/useGetTodoList";
+import { List } from "interfaces";
+import { TodoModel } from "interfaces/models";
 import todoServices from "services/todoServices";
 
 interface IHome {
@@ -24,7 +25,11 @@ const Home: NextPage<IHome> = ({ todoList }) => {
     <div>
       {todoList.map((todo) => (
         <div key={todo.id}>
-          {todo.id} - {todo.title}
+          <Link href={`/todo/${todo.id}`}>
+            <a>
+              {todo.id} - {todo.title}
+            </a>
+          </Link>
         </div>
       ))}
     </div>
