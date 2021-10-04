@@ -1,8 +1,9 @@
 import React from "react";
+import { NextPageContext } from "next";
+import { useTranslation } from "next-i18next";
 import todoServices from "services/todoServices";
 import { TodoModel } from "interfaces/models";
-import { NextPageContext } from "next";
-import useTranslation from "hooks/useTranslation";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 interface ITodoDetail extends NextPageContext {
   todo: TodoModel;
@@ -12,7 +13,7 @@ interface ITodoDetail extends NextPageContext {
 const TodoDetailPage: React.FC<ITodoDetail> = (props) => {
   //! State
   const { todo, locale } = props;
-  const { t } = useTranslation(locale);
+  const { t } = useTranslation("common");
 
   //! Function
 
@@ -20,11 +21,14 @@ const TodoDetailPage: React.FC<ITodoDetail> = (props) => {
   return (
     <div className="todo">
       {/* Example i18n */}
-      <div>
+      <div className="example-i18n">
         Locale: {locale}
         <br />
-        <b>{t.hello}</b>
+        <b>{t("change-locale")}</b>
+        <br />
+        <b>{t("number", { number: todo?.id })}</b>
       </div>
+
       <div className="todo-id">{todo?.id}</div>
       <div className="todo-title">{todo?.title}</div>
     </div>
@@ -36,7 +40,15 @@ export async function getServerSideProps({ params, locale }: any) {
   const todo = res?.data;
 
   // Pass post data to the page via props
-  return { props: { todo, locale } };
+  return {
+    props: {
+      todo,
+      locale,
+
+      //* serverSideTranslations must have for translation
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }
 
 export default TodoDetailPage;
