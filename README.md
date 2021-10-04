@@ -1,4 +1,4 @@
-<h1 align="center">Typescript + Next.js + Redux + Redux Saga + Scss</h1>
+<h1 align="center">Typescript + Next.js + Redux + Redux Saga + Scss + i18n</h1>
 
 <p align="center">
   <a href="https://nextjs.org/" target="_blank"><img src="https://img.shields.io/badge/Next.js-v9.3.5-blueviolet.svg"></a>
@@ -8,6 +8,7 @@
 
 ## Packges use in template:
 
+- Typescript
 - React.js
 - Next.js
 - SCSS
@@ -16,6 +17,7 @@
 - Axios
 - Formik
 - Yup Validator
+- i18n (multi lang)
 
 ## How to use
 
