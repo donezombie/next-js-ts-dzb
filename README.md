@@ -6,7 +6,7 @@
   <a href="https://github.com/codica2" target="_blank"><img src="https://img.shields.io/badge/licence-MIT-green.svg" /></a>
 </p>
 
-## Packges use in template:
+## Packages use in template:
 
 - Typescript
 - React.js
@@ -23,16 +23,13 @@
 
 ```javascript
 npm i
-npm run dev ( developepment )
-npm start ( production )
+npm run dev ( development )
+
+npm run build
+npm run publish (build & export)
 ```
 
-## Environment
-
-You can access your .env variables by deconstructing 'process.env' object, both on client and server.
-Just make sure that you reboot the server when updating .env file
-
-### Development
+### New upgrade
 
 - Upgrade Nextjs 11.1.2.
 - Restructure Redux folder.
