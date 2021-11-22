@@ -1,8 +1,7 @@
 import { List } from "interfaces";
-import { TodoModel } from "interfaces/models";
 import { useEffect, useState } from "react";
 import todosServices from "services/todoServices";
-import { isArray } from "lodash";
+import TodoModel from "models/todo.model";
 
 const useGetTodoList = () => {
   const [data, setData] = useState<List<TodoModel>>([]);
@@ -13,9 +12,7 @@ const useGetTodoList = () => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await todosServices.getTodos();
-        if (isArray(response?.data)) {
-          setData(response?.data);
-        }
+        setData(TodoModel.parseListTodoFromResponse(response));
         resolve(response);
       } catch (error) {
         setError(error);
@@ -29,16 +26,7 @@ const useGetTodoList = () => {
       setLoading(true);
       try {
         const response = await todosServices.getTodos();
-
-        const isError = response?.data?.error;
-        if (isError) {
-          setError(isError);
-        } else {
-          if (isArray(response?.data)) {
-            setData(response?.data);
-          }
-        }
-
+        setData(TodoModel.parseListTodoFromResponse(response));
         setLoading(false);
       } catch (error) {
         setError(error);

@@ -7,9 +7,9 @@ const Footer: React.FC = (props) => {
 
   //! Render
   return (
-    <div>
+    <footer>
       <hr /> This is Footer
-    </div>
+    </footer>
   );
 };
 

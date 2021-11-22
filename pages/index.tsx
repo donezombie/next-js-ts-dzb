@@ -1,27 +1,24 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getTodosList } from "redux/actions";
-import type { GetStaticPathsContext, GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Link from "next/link";
 import useGetTodoList from "hooks/todos/useGetTodoList";
 import { List } from "interfaces";
-import { TodoModel } from "interfaces/models";
 import todoServices from "services/todoServices";
-import { GetStaticPropsCallback } from "next-redux-wrapper";
+import useSagaCreators from "hooks/useSagaCreators";
+import TodoModel from "models/todo.model";
 
 interface IHome {
   todoList: List<TodoModel>;
 }
 
-const Home: NextPage<IHome> = ({ todoList, locale, locales }) => {
-  const dispatch = useDispatch();
+const Home: NextPage<IHome> = ({ todoList }) => {
+  const { dispatch } = useSagaCreators();
   const { data, loading } = useGetTodoList();
-  console.log({ locale, locales });
+  console.log(data)
 
   useEffect(() => {
     //* Example dispatch action redux
-    dispatch(getTodosList({}));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -43,7 +40,6 @@ const Home: NextPage<IHome> = ({ todoList, locale, locales }) => {
 export async function getStaticProps({ locale, locales }: any) {
   const response = await todoServices.getTodos();
   const todoList = response?.data || [];
-  console.log({ locale, locales });
   return {
     props: {
       todoList,

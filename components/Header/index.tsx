@@ -8,11 +8,11 @@ const Header: React.FC = (props) => {
 
   //! Render
   return (
-    <div>
+    <header>
       <LocaleSwitcher />
       This is Header
       <hr />
-    </div>
+    </header>
   );
 };
 

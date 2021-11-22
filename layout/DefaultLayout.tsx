@@ -9,11 +9,11 @@ const DefaultLayout: React.FC = ({ children }) => {
 
   //! Render
   return (
-    <Fragment>
+    <div id="root">
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
-    </Fragment>
+    </div>
   );
 };
 
