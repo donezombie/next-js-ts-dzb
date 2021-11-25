@@ -1,6 +1,6 @@
+import TodoModel from "models/todo.model";
 import React from "react";
 import todoServices from "services/todoServices";
-import { TodoModel } from "interfaces/models";
 
 const propTypes = {};
 
