@@ -14,7 +14,7 @@
     "formik": "^2.2.9",
     "immer": "^9.0.6",
     "lodash": "^4.17.21",
-    "next": "11.1.2",
+    "next": "^12.1.5",
     "next-i18next": "^8.8.0",
     "next-redux-wrapper": "^7.0.5",
     "nprogress": "^0.2.0",
@@ -29,6 +29,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/node": "^17.0.25",
     "@types/nprogress": "^0.2.0",
     "@types/react": "17.0.26",
     "@types/redux-logger": "^3.0.9",
