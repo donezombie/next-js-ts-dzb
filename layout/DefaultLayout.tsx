@@ -1,8 +1,12 @@
+import React, { ReactElement } from "react";
 import Footer from "components/Footer";
 import Header from "components/Header";
-import React, { Fragment } from "react";
 
-const DefaultLayout: React.FC = ({ children }) => {
+interface DefaultLayoutI {
+  children: ReactElement;
+}
+
+const DefaultLayout: React.FC<DefaultLayoutI> = ({ children }) => {
   //! State
 
   //! Function

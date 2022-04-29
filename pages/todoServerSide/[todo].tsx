@@ -2,7 +2,7 @@ import React from "react";
 import { NextPageContext } from "next";
 import { useTranslation } from "next-i18next";
 import todoServices from "services/todoServices";
-import { TodoModel } from "interfaces/models";
+import TodoModel from "models/todo.model";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 interface ITodoDetail extends NextPageContext {
