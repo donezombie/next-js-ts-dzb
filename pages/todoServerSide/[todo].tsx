@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import todoServices from "services/todoServices";
 import TodoModel from "models/todo.model";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import useGetTodoList from "hooks/todos/useGetTodoList";
 
 interface ITodoDetail extends NextPageContext {
   todo: TodoModel;
@@ -16,6 +17,7 @@ const TodoDetailPage: React.FC<ITodoDetail> = (props) => {
   const { t } = useTranslation("common");
 
   //! Function
+  const { data, loading, error } = useGetTodoList();
 
   //! Render
   return (

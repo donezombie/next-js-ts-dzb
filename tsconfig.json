@@ -28,7 +28,8 @@
     "alwaysStrict": true,
     "suppressImplicitAnyIndexErrors": true,
     "noFallthroughCasesInSwitch": true,
-    "incremental": false
+    "incremental": false,
+    "downlevelIteration": true
   },
   "include": [
     "next-env.d.ts",

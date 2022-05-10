@@ -1,17 +1,35 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 class Services {
-  axios: any;
-  interceptors: null;
+  axios: AxiosInstance;
 
   constructor() {
     this.axios = axios;
-    this.interceptors = null;
     this.axios.defaults.withCredentials = true;
+
+    //! Interceptor request
+    this.axios.interceptors.request.use(
+      function (config) {
+        return config;
+      },
+      function (error) {
+        return Promise.reject(error);
+      }
+    );
+
+    //! Interceptor response
+    this.axios.interceptors.response.use(
+      function (config) {
+        return config;
+      },
+      function (error) {
+        return Promise.reject(error);
+      }
+    );
   }
 
   attachTokenToHeader(token: string) {
-    this.interceptors = this.axios.interceptors.request.use(
+    this.axios.interceptors.request.use(
       function (config: any) {
         // Do something before request is sent
         config.headers.sessionId = token;
@@ -19,28 +37,24 @@ class Services {
       },
       function (error: any) {
         return Promise.reject(error);
-      },
+      }
     );
   }
 
-  removeInterceptors() {
-    this.axios.interceptors.request.eject(this.interceptors);
+  get(url: string, config?: AxiosRequestConfig) {
+    return this.axios.get(url, config);
   }
 
-  get(...arg: any) {
-    return this.axios.get(...arg);
+  post(url: string, data: any, config?: AxiosRequestConfig) {
+    return this.axios.post(url, data, config);
   }
 
-  post(...arg: any) {
-    return this.axios.post(...arg);
+  delete(url: string, config?: AxiosRequestConfig) {
+    return this.axios.delete(url, config);
   }
 
-  delete(...arg: any) {
-    return this.axios.delete(...arg);
-  }
-
-  put(...arg: any) {
-    return this.axios.put(...arg);
+  put(url: string, data: any, config?: AxiosRequestConfig) {
+    return this.axios.put(url, data, config);
   }
 }
 
