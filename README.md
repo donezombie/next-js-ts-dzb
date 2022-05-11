@@ -1,8 +1,8 @@
 <h1 align="center">Typescript + Next.js + Redux + Redux Saga + Scss + i18n</h1>
 
 <p align="center">
-  <a href="https://nextjs.org/" target="_blank"><img src="https://img.shields.io/badge/Next.js-v9.3.5-blueviolet.svg"></a>
-  <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-v16.13.1-%238DD6F9.svg?logo=React"></a>
+  <a href="https://nextjs.org/" target="_blank"><img src="https://img.shields.io/badge/Next.js-v12.1.5-blueviolet.svg"></a>
+  <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-v18.1.0-%238DD6F9.svg?logo=React"></a>
   <a href="https://github.com/codica2" target="_blank"><img src="https://img.shields.io/badge/licence-MIT-green.svg" /></a>
 </p>
 
