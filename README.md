@@ -14,11 +14,6 @@
 
   <img alt="License" src="https://img.shields.io/github/license/jpedroschmitz/typescript-nextjs-starter?style=flat-square&color=5e17eb&labelColor=000000">
 </div>
-
-<div align="center">
-  <sub>Cre: <a href="https://twitter.com/jpedroschmitz">João Pedro</a></sub>
-</div>
-
 <br />
 
 ## Features
