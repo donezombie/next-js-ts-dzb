@@ -1,0 +1,10 @@
+{
+  "hello": "Xin chào",
+  "login": "Đăng nhập",
+  "signup": "Đăng ký",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "enter": "Nhập {{key}}",
+  "logout": "Đăng xuất",
+  "confirm": "Xác nhận {{key}}"
+}

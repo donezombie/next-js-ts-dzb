@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,27 +12,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "noEmitOnError": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noFallthroughCasesInSwitch": true,
-    "incremental": false,
-    "downlevelIteration": true
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"]
+    },
+    "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next-i18next.config.js"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js", "next-i18next.config.js"]
 }
