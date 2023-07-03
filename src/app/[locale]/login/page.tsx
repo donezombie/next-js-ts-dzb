@@ -2,12 +2,12 @@
 
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { FormEvent, useState } from 'react';
 import PageLayout from 'components/PageLayout';
+import pageUrls from 'constants/pageUrls';
 
 export default function Login() {
-  const locale = useLocale();
   const t = useTranslations('Login');
   const [error, setError] = useState<string>();
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function Login() {
       if (result?.error) {
         setError(result.error);
       } else {
-        router.push('/' + locale);
+        router.push(pageUrls.Homepage);
       }
     });
   }

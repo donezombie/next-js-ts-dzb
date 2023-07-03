@@ -18,6 +18,8 @@ export default function Index({ session }: Props) {
     signOut();
   }
 
+  console.log({ session });
+
   return (
     <PageLayout title={t('title')}>
       {session ? (
