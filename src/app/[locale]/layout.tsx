@@ -1,42 +1,32 @@
-import "react-toastify/dist/ReactToastify.css";
-import { useLocale } from "next-intl";
-import { notFound } from "next/navigation";
-import { Inter } from "next/font/google";
-import LocaleLayoutContent from "./layoutContent";
+import {notFound} from 'next/navigation';
+import {NextIntlClientProvider} from 'next-intl';
+import {ReactNode} from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+type Props = {
+  children: ReactNode;
+  params: {locale: string};
+};
 
 export default async function LocaleLayout({
   children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  const locale = useLocale();
-  const messages = (await import(`../../locales/${locale}.json`)).default;
-
-  if (params.locale !== locale) {
+  params: {locale}
+}: Props) {
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
     notFound();
   }
 
   return (
     <html lang={locale}>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
-        />
-        <title>Next JS 13 - By Donezombie</title>
+        <title>next-intl & next-auth</title>
       </head>
-      <body className={inter.className}>
-        <LocaleLayoutContent locale={locale} messages={messages}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
-        </LocaleLayoutContent>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

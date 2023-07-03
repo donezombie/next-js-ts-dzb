@@ -1,16 +1,15 @@
-import React, { useCallback } from "react";
-import { cloneDeep } from "lodash";
+import React, { useCallback } from 'react';
+import { cloneDeep } from 'lodash';
+import { PaginationFilters } from 'interfaces/common';
 
-function useFiltersHandler<T>(initialFilters: T & { page?: number }) {
+function useFiltersHandler<T>(initialFilters: T & PaginationFilters) {
   const [filters, setFilters] = React.useState(initialFilters);
 
   const increasePage = useCallback(() => {
     setFilters((prev) => {
       const nextFilters = cloneDeep(prev);
       if (nextFilters) {
-        if ("page" in nextFilters) {
-          nextFilters["page"] = (nextFilters?.["page"] || 0) + 1;
-        }
+        nextFilters['page'] = (nextFilters?.['page'] || 0) + 1;
       }
       return nextFilters;
     });
