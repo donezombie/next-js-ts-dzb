@@ -1,0 +1,27 @@
+{
+  "Index": {
+    "title": "Trang chủ",
+    "loggedIn": "Đăng nhập bởi {username}",
+    "loggedOut": "Bạn đã bị Đăng xuất",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "secret": "Trang được bảo mật phải đăng nhập mới thấy"
+  },
+  "LocaleLayout": {
+    "title": "next-intl với Auth.js"
+  },
+  "Login": {
+    "title": "Đăng nhập",
+    "username": "Tài khoản",
+    "password": "Mật khẩu",
+    "submit": "Đăng nhập",
+    "error": "{error, select, CredentialsSignin {Sai tài khoản hoặc mật khẩu} other {Lỗi không rõ nguyên nhân}}"
+  },
+  "LocaleSwitcher": {
+    "switchLocale": "Chọn ngôn ngữ {locale, select, de {Tiếng Đức} en {Tiếng Anh} vi {Tiếng Việt} other {Khác}}"
+  },
+  "Secret": {
+    "title": "Trang bảo mật",
+    "description": "Trang này chỉ nhìn thấy nếu người dùng đã đăng nhập"
+  }
+}

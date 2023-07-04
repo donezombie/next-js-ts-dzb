@@ -18,7 +18,7 @@
     "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}"
   },
   "LocaleSwitcher": {
-    "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
+    "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} vi {Vietnamese} other {Unbekannt}} wechseln"
   },
   "Secret": {
     "title": "Geheime Seite",

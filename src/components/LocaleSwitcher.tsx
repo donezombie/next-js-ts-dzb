@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Lang, languages } from 'i18nOptions';
 import { usePathname } from 'next/navigation';
+import { Fragment } from 'react';
 
 const removeLangFromPathname = (pathname: string) => {
   let nextPathname = pathname;
@@ -14,14 +15,22 @@ const removeLangFromPathname = (pathname: string) => {
 
 export default function LocaleSwitcher() {
   const t = useTranslations('LocaleSwitcher');
-  const locale = useLocale();
   const pathname = usePathname();
-  const otherLocale = locale === Lang.en ? Lang.de : Lang.en;
-  const nextPathName = `/${otherLocale}${removeLangFromPathname(pathname)}`;
 
   return (
-    <Link href={nextPathName} prefetch={false}>
-      {t('switchLocale', { locale: otherLocale })}
-    </Link>
+    <Fragment>
+      {languages.map((lang) => {
+        const nextPathName = `/${lang}${removeLangFromPathname(pathname)}`;
+
+        return (
+          <p key={lang}>
+            <Link href={nextPathName} prefetch={false}>
+              {lang === Lang.en && '🇬🇧'} {lang === Lang.vi && '🇻🇳'} {lang === Lang.de && '🇩🇪'}{' '}
+              {t('switchLocale', { locale: lang })}
+            </Link>
+          </p>
+        );
+      })}
+    </Fragment>
   );
 }

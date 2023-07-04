@@ -1,6 +1,7 @@
 export enum Lang {
   de = 'de',
   en = 'en',
+  vi = 'vi',
 }
 
-export const languages = [Lang.en, Lang.de];
+export const languages = [Lang.vi, Lang.en, Lang.de];

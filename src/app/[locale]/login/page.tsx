@@ -1,63 +1,70 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import PageLayout from 'components/PageLayout';
 import pageUrls from 'constants/pageUrls';
+import { Form, Formik } from 'formik';
 
 export default function Login() {
   const t = useTranslations('Login');
   const [error, setError] = useState<string>();
   const router = useRouter();
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (error) setError(undefined);
-
-    const formData = new FormData(event.currentTarget);
-    signIn('credentials', {
-      username: formData.get('username'),
-      password: formData.get('password'),
-      redirect: false,
-    }).then((result) => {
-      if (result?.error) {
-        setError(result.error);
-      } else {
-        router.push(pageUrls.Homepage);
-      }
-    });
-  }
-
   return (
     <PageLayout title={t('title')}>
-      <form
-        action='/api/auth/callback/credentials'
-        method='post'
-        onSubmit={onSubmit}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 10,
-          width: 300,
+      <Formik
+        initialValues={{ username: '', password: '' }}
+        onSubmit={(values) => {
+          if (error) setError(undefined);
+
+          signIn('credentials', {
+            username: values.username,
+            password: values.password,
+            redirect: false,
+          }).then((result) => {
+            if (result?.error) {
+              setError(result.error);
+            } else {
+              router.push(pageUrls.Homepage);
+            }
+          });
         }}
       >
-        <label style={{ display: 'flex' }}>
-          <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
-            {t('username')}
-          </span>
-          <input name='username' type='text' />
-        </label>
-        <label style={{ display: 'flex' }}>
-          <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
-            {t('password')}
-          </span>
-          <input name='password' type='password' />
-        </label>
-        {error && <p>{t('error', { error })}</p>}
-        <button type='submit'>{t('submit')}</button>
-      </form>
+        {({ handleChange, handleBlur }) => {
+          return (
+            <Form
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+                width: 300,
+              }}
+            >
+              <label style={{ display: 'flex' }}>
+                <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
+                  {t('username')}
+                </span>
+                <input name='username' type='text' onBlur={handleBlur} onChange={handleChange} />
+              </label>
+              <label style={{ display: 'flex' }}>
+                <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
+                  {t('password')}
+                </span>
+                <input
+                  name='password'
+                  type='password'
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                />
+              </label>
+              {error && <p>{t('error', { error })}</p>}
+              <button type='submit'>{t('submit')}</button>
+            </Form>
+          );
+        }}
+      </Formik>
     </PageLayout>
   );
 }
