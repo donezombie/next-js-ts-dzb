@@ -17,7 +17,7 @@ const auth: AuthOptions = {
         return null;
       },
     }),
-  ],
+  ]
 };
 
 export default auth;
