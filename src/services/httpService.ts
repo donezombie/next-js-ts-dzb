@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { parseAuthFromCookie } from 'hooks/useAuth';
 
 class HttpService {
   axios: AxiosInstance;
@@ -11,6 +12,20 @@ class HttpService {
         return config;
       },
       (error) => {
+        return Promise.reject(error);
+      }
+    );
+  }
+
+  attachTokenToHeader() {
+    const token = parseAuthFromCookie().token;
+    this.axios.interceptors.request.use(
+      function (config) {
+        // Do something before request is sent
+        config.headers['Authorization'] = token;
+        return config;
+      },
+      function (error) {
         return Promise.reject(error);
       }
     );

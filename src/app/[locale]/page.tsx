@@ -1,8 +1,5 @@
-import {getServerSession} from 'next-auth';
-import auth from 'auth';
-import Index from './Index';
+import PageContent from "./pageContent";
 
-export default async function IndexPage() {
-  const session = await getServerSession(auth);
-  return <Index session={session} />;
+export default function Index() {
+  return <PageContent />;
 }

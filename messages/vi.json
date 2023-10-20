@@ -1,27 +1,22 @@
 {
-  "Index": {
-    "title": "Trang chủ",
-    "loggedIn": "Đăng nhập bởi {username}",
-    "loggedOut": "Bạn đã bị Đăng xuất",
-    "login": "Đăng nhập",
-    "logout": "Đăng xuất",
-    "secret": "Trang được bảo mật phải đăng nhập mới thấy"
+  "Common": {
+    "Homepage": "Trang chủ",
+    "English": "English",
+    "Vietnamese": "Tiếng việt",
+    "Login": "Đăng nhập",
+    "Logout": "Đăng xuất",
+    "Title": "Tiêu đề",
+    "Description": "Mô tả",
+    "Username": "Tên đăng nhập",
+    "Password": "Mật khẩu",
+    "Submit": "Xác nhận",
+    "Error": "Lỗi {error}",
+    "NotFound": "Không tìm thấy"
   },
-  "LocaleLayout": {
-    "title": "next-intl với Auth.js"
+  "Locales": {
+    "SwitchLocale": "Chuyển ngôn ngữ sang {locale, select, en {English} vi {Tiếng việt} other {Unknown}}"
   },
-  "Login": {
-    "title": "Đăng nhập",
-    "username": "Tài khoản",
-    "password": "Mật khẩu",
-    "submit": "Đăng nhập",
-    "error": "{error, select, CredentialsSignin {Sai tài khoản hoặc mật khẩu} other {Lỗi không rõ nguyên nhân}}"
-  },
-  "LocaleSwitcher": {
-    "switchLocale": "Chọn ngôn ngữ {locale, select, de {Tiếng Đức} en {Tiếng Anh} vi {Tiếng Việt} other {Khác}}"
-  },
-  "Secret": {
-    "title": "Trang bảo mật",
-    "description": "Trang này chỉ nhìn thấy nếu người dùng đã đăng nhập"
+  "Content": {
+    "Title": "Demo Next JS 13.5.2 + Next Intl + Tailwind CSS"
   }
 }

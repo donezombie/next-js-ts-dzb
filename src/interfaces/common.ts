@@ -1,3 +1,8 @@
 export interface PaginationFilters {
-    page?: number;
+  page?: number;
+}
+
+export interface Auth {
+  name: string;
+  token: string;
 }

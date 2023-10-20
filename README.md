@@ -18,8 +18,9 @@
 
 ## Features
 
-- ⚡️ Next.js 13.4.x
+- ⚡️ Next.js 13.5.x
 - ⚛️ React 18
+- 🪄 Tailwind CSS
 - ⛑ TypeScript
 - 📏 ESLint — To find and fix problems in your code
 - 💖 Prettier — Code Formatter for consistent style

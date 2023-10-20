@@ -1,27 +1,22 @@
 {
-  "Index": {
-    "title": "Home",
-    "loggedIn": "Logged in as {username}",
-    "loggedOut": "You are logged out.",
-    "login": "Login",
-    "logout": "Logout",
-    "secret": "Secret page for logged in users"
+  "Common": {
+    "Homepage": "Homepage",
+    "English": "English",
+    "Vietnamese": "Tiếng việt",
+    "Login": "Login",
+    "Logout": "Logout",
+    "Title": "Title",
+    "Description": "Description",
+    "Username": "Username",
+    "Password": "Password",
+    "Submit": "Submit",
+    "Error": "Error {error}",
+    "NotFound": "Not found"
   },
-  "LocaleLayout": {
-    "title": "next-intl with Auth.js example"
+  "Locales": {
+    "SwitchLocale": "Switch lang to {locale, select, en {English} vi {Vietnamese} other {Unknown}}"
   },
-  "Login": {
-    "title": "Login",
-    "username": "Username",
-    "password": "Password",
-    "submit": "Login",
-    "error": "{error, select, CredentialsSignin {Invalid username or password} other {Unknown error}}"
-  },
-  "LocaleSwitcher": {
-    "switchLocale": "Switch to {locale, select, de {German} en {English} vi {Vietnamese} other {Unknown}}"
-  },
-  "Secret": {
-    "title": "Secret page",
-    "description": "This page is only visible for logged in users."
+  "Content": {
+    "Title": "Demo Next JS 13.5.2 + Next Intl + Tailwind CSS"
   }
 }
