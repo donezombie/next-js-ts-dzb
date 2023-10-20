@@ -34,7 +34,9 @@
 
 ### Development
 
-**Credentials**: admin / admin
+**Credentials**: donezombie / donezombie
+
+Should use Node version >= 18
 
 To start the project locally, run:
 
