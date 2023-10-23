@@ -1,26 +1,14 @@
 "use client";
+import { useRouter } from "next/navigation";
+import React, { useCallback, useContext, useMemo, useState } from "react";
 import pageUrls from "constants/pageUrls";
 import { Auth } from "interfaces/common";
-import { useRouter } from "next/navigation";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
 import authService from "services/authService";
 
 const AuthenticationContext = React.createContext<{
   auth: Auth | undefined;
-  login: ({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) => void;
-  logout: () => void;
+  login({ password, username }: { username: string; password: string }): void;
+  logout(): void;
 }>({
   auth: undefined,
   login: () => {},
@@ -33,15 +21,16 @@ type AuthenticationProviderProps = {
   children: React.ReactNode;
 };
 
-const AuthenticationProvider = ({ children }: AuthenticationProviderProps) => {
-  //! State
+function AuthenticationProvider({ children }: AuthenticationProviderProps) {
+  // ! State
   const router = useRouter();
-  const [auth, setAuth] = useState<Auth | undefined>(authService.getAuthStorage());
-  console.log({ auth });
+  const [auth, setAuth] = useState<Auth | undefined>(
+    authService.getAuthStorage()
+  );
 
-  //! Function
+  // ! Function
   const login = useCallback(
-    ({ username, password }: { username: string; password: string }) => {
+    ({ password, username }: { username: string; password: string }) => {
       if (username === "donezombie" && password === "donezombie") {
         const user = {
           token:
@@ -62,19 +51,20 @@ const AuthenticationProvider = ({ children }: AuthenticationProviderProps) => {
     window.location.reload();
   }, []);
 
-  const values = useMemo(() => {
-    return {
+  const values = useMemo(
+    () => ({
       auth,
       logout,
       login,
-    };
-  }, [auth, login, logout]);
+    }),
+    [auth, login, logout]
+  );
 
   return (
     <AuthenticationContext.Provider value={values}>
       {children}
     </AuthenticationContext.Provider>
   );
-};
+}
 
 export default AuthenticationProvider;

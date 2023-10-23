@@ -52,4 +52,6 @@ export default function middleware(req: NextRequest) {
 export const config = {
   // Skip all paths that should not be internationalized
   matcher: ["/((?!_next|.*\\..*).*)"],
+  runtime: "experimental-edge",
+  unstable_allowDynamic: ["**/node_modules/lodash/**/*.js"],
 };

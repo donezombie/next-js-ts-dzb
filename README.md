@@ -36,8 +36,6 @@
 
 **Credentials**: donezombie / donezombie
 
-Should use Node version >= 18
-
 To start the project locally, run:
 
 ```
@@ -49,4 +47,4 @@ Open `http://localhost:3000` with your browser to see the result.
 
 ### Requirements
 
-- Node.js >= 14
+- Node.js >= 18

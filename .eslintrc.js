@@ -1,13 +1,11 @@
 module.exports = {
   env: {
-    node: true
+    node: true,
   },
-  extends: [
-    'molindo/typescript',
-    'molindo/react',
-    'plugin:@next/next/recommended'
-  ],
+  "extends": "next/core-web-vitals",
   rules: {
-    'react/react-in-jsx-scope': 'off'
-  }
+    "react/react-in-jsx-scope": "off",
+    "func-style": "off",
+    "no-console": "off",
+  },
 };
