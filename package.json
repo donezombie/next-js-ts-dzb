@@ -8,7 +8,8 @@
     "test": "playwright test",
     "test:watch": "chokidar 'tests/main.spec.ts' -c 'npm run test'",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^1.4.0",
@@ -40,6 +41,7 @@
     "eslint": "^8.46.0",
     "eslint-config-molindo": "^7.0.0",
     "eslint-config-next": "^13.4.0",
+    "husky": "^8.0.3",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.0"

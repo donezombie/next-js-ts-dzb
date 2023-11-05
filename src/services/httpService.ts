@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { parseAuthFromCookie } from 'hooks/useAuth';
+import { parseAuthFromCookie } from "helpers/common";
 
 class HttpService {
   axios: AxiosInstance;
