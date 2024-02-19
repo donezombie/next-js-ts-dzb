@@ -18,5 +18,9 @@
   },
   "Content": {
     "Title": "Demo Next JS 13.5.2 + Next Intl + Tailwind CSS"
+  },
+  "Messages": {
+    "IsRequired": "{field} is required field!",
+    "UsernameOrPasswordInCorrect": "Username or password is incorrect!"
   }
 }

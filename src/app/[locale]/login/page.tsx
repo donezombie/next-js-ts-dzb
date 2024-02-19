@@ -2,57 +2,79 @@
 import { useTranslations } from "next-intl";
 import { Form, Formik } from "formik";
 import { useAuth } from "providers/AuthenticationProvider";
+import FormikField from "components/CustomFields/FormikField";
+import InputField from "components/CustomFields/InputField";
+import * as Yup from "yup";
+import { Button } from "components/ui/button";
+import CommonIcons from "components/commonIcons";
+import Typography from "components/ui/Typography";
+import { useState } from "react";
 
 export default function Login() {
   const t = useTranslations();
   const { login } = useAuth();
+  const [errorMsg, setErrorMsg] = useState("");
 
   return (
     <Formik
       initialValues={{ username: "", password: "" }}
-      onSubmit={(values) => {
-        login({ username: values.username, password: values.password });
+      validationSchema={Yup.object().shape({
+        username: Yup.string().required(
+          t("Messages.IsRequired", { field: t("Common.Username") })
+        ),
+        password: Yup.string().required(
+          t("Messages.IsRequired", { field: t("Common.Password") })
+        ),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        login({
+          username: values.username,
+          password: values.password,
+          onFailed: () => {
+            setSubmitting(false);
+            setErrorMsg(t("Messages.UsernameOrPasswordInCorrect"));
+          },
+        });
       }}
     >
-      {({ handleChange, handleBlur }) => {
+      {({ isSubmitting }) => {
         return (
-          <Form
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-              width: 300,
-            }}
-          >
-            donezombie && donezombie
-            <label style={{ display: "flex" }}>
-              <span
-                style={{ display: "inline-block", flexGrow: 1, minWidth: 100 }}
-              >
-                {t("Common.Username")}
-              </span>
-              <input
+          <div className="p-4 flex justify-center">
+            <Form className="flex flex-col gap-[10px] w-[300px] border rounded p-2">
+              <Typography component="h4">{t("Common.Login")}</Typography>
+
+              <div className="border p-2 rounded-md bg-slate-200">
+                <Typography component="p">
+                  {t("Common.Username")} / {t("Common.Password")}:
+                </Typography>
+                <Typography className="text-xs">
+                  donezombie & donezombie
+                </Typography>
+              </div>
+
+              <FormikField
+                component={InputField}
                 name="username"
-                type="text"
-                onBlur={handleBlur}
-                onChange={handleChange}
+                label={t("Common.Username")}
               />
-            </label>
-            <label style={{ display: "flex" }}>
-              <span
-                style={{ display: "inline-block", flexGrow: 1, minWidth: 100 }}
-              >
-                {t("Common.Password")}
-              </span>
-              <input
+              <FormikField
+                component={InputField}
                 name="password"
+                label={t("Common.Password")}
                 type="password"
-                onBlur={handleBlur}
-                onChange={handleChange}
               />
-            </label>
-            <button type="submit">{t("Common.Submit")}</button>
-          </Form>
+
+              {errorMsg && (
+                <Typography className="invalid-text" component="p">
+                  {errorMsg}
+                </Typography>
+              )}
+
+              <Button type="submit" isLoading={isSubmitting}>
+                <CommonIcons.LogIn className="icon" /> {t("Common.Submit")}
+              </Button>
+            </Form>
+          </div>
         );
       }}
     </Formik>

@@ -1,4 +1,6 @@
 "use client";
+import Typography from "components/ui/Typography";
+import { Button } from "components/ui/button";
 import { JWT_AUTH } from "constants/common";
 import pageUrls from "constants/pageUrls";
 import { removeLangFromPathname } from "helpers/common";
@@ -17,10 +19,12 @@ export default function PageContent() {
 
   return (
     <div className="p-2">
-      <h2 className="h2">{t("Content.Title")}</h2>
-      <p className="mb-2 font-semibold text-lg">{t("Common.Homepage")}</p>
+      <Typography component="h2">{t("Content.Title")}</Typography>
+      <Typography component="p" className="mb-2 font-semibold text-lg">
+        {t("Common.Homepage")}
+      </Typography>
 
-      <div className="border border-green-400 p-2 rounded-md">
+      <div className="border p-2 rounded-md">
         {languages.map((lang) => {
           const nextPathName = `/${lang}${removeLangFromPathname(pathname)}`;
 
@@ -29,39 +33,43 @@ export default function PageContent() {
           }
 
           return (
-            <p key={lang}>
+            <Typography component="p" className="text-sm" key={lang}>
               <Link href={nextPathName} locale={lang} prefetch={false}>
                 {lang === Lang.en && "🇬🇧"} {lang === Lang.vi && "🇻🇳"}{" "}
                 {t("Locales.SwitchLocale", { locale: lang })}
               </Link>
-            </p>
+            </Typography>
           );
         })}
       </div>
 
       {auth ? (
         <div className="mt-2 rounded border p-2">
-          <div>
+          <Typography component="p" className="text-sm">
             {t("Common.Username")}: {auth?.name}
-          </div>
-          <div>{auth?.token}</div>
-          <button
+          </Typography>
+          <Typography component="p" className="text-sm">
+            {auth?.token}
+          </Typography>
+          <Button
             className="mt-2"
             onClick={() => {
               Cookies.remove(JWT_AUTH);
               window.location.reload();
             }}
           >
-            Logout
-          </button>
+            {t("Common.Logout")}
+          </Button>
         </div>
       ) : (
         <div className="mt-2">
           {[{ label: t("Common.Login"), link: pageUrls.Login }].map((el) => {
             return (
-              <Link key={el.link} href={el.link}>
-                {el.label}
-              </Link>
+              <Button key={el.label}>
+                <Link key={el.link} href={el.link}>
+                  {el.label}
+                </Link>
+              </Button>
             );
           })}
         </div>

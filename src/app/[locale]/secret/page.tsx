@@ -1,5 +1,7 @@
 "use client";
 
+import Typography from "components/ui/Typography";
+import { Button } from "components/ui/button";
 import { useTranslations } from "next-intl";
 import { useAuth } from "providers/AuthenticationProvider";
 
@@ -8,22 +10,21 @@ export default function Secret() {
   const { auth, logout } = useAuth();
 
   return (
-    <div>
-      <p>{t("Common.Description")}</p>
+    <div className="p-4">
+      <Typography component="p" className="mb-2">
+        {t("Common.Description")}
+      </Typography>
 
-      <div
-        style={{
-          border: "1px solid #000",
-          padding: 12,
-          borderRadius: "0.5rem",
-          marginBottom: 12,
-        }}
-      >
-        <p>Name: {auth?.name}</p>
-        <p>Token: {auth?.token}</p>
+      <div className="border rounded p-3 mb-2">
+        <Typography component="p" className="text-sm">
+          Name: {auth?.name}
+        </Typography>
+        <Typography component="p" className="text-sm break-words  ">
+          Token: {auth?.token}
+        </Typography>
       </div>
 
-      <button onClick={logout}>{t("Common.Logout")}</button>
+      <Button onClick={logout}>{t("Common.Logout")}</Button>
     </div>
   );
 }

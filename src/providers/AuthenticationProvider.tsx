@@ -5,9 +5,16 @@ import pageUrls from "constants/pageUrls";
 import { Auth } from "interfaces/common";
 import authService from "services/authService";
 
+type LoginFunction = {
+  username: string;
+  password: string;
+  onSuccess?: () => void;
+  onFailed?: () => void;
+};
+
 const AuthenticationContext = React.createContext<{
   auth: Auth | undefined;
-  login({ password, username }: { username: string; password: string }): void;
+  login({ password, username }: LoginFunction): void;
   logout(): void;
 }>({
   auth: undefined,
@@ -30,7 +37,7 @@ function AuthenticationProvider({ children }: AuthenticationProviderProps) {
 
   // ! Function
   const login = useCallback(
-    ({ password, username }: { username: string; password: string }) => {
+    ({ password, username, onFailed, onSuccess }: LoginFunction) => {
       if (username === "donezombie" && password === "donezombie") {
         const user = {
           token:
@@ -41,6 +48,8 @@ function AuthenticationProvider({ children }: AuthenticationProviderProps) {
         setAuth(user);
         authService.saveAuthToStorage(user);
         router.push(pageUrls.Secret);
+      } else {
+        onFailed && onFailed();
       }
     },
     [router]
