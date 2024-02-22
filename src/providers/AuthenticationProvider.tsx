@@ -1,7 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React, { useCallback, useContext, useMemo, useState } from "react";
-import pageUrls from "constants/pageUrls";
 import { Auth } from "interfaces/common";
 import authService from "services/authService";
 
@@ -30,7 +28,6 @@ type AuthenticationProviderProps = {
 
 function AuthenticationProvider({ children }: AuthenticationProviderProps) {
   // ! State
-  const router = useRouter();
   const [auth, setAuth] = useState<Auth | undefined>(
     authService.getAuthStorage()
   );
@@ -47,12 +44,12 @@ function AuthenticationProvider({ children }: AuthenticationProviderProps) {
 
         setAuth(user);
         authService.saveAuthToStorage(user);
-        router.push(pageUrls.Secret);
+        onSuccess && onSuccess();
       } else {
         onFailed && onFailed();
       }
     },
-    [router]
+    []
   );
 
   const logout = useCallback(() => {
