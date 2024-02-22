@@ -35,10 +35,11 @@ export default function Login() {
           password: values.password,
           onSuccess: () => {
             router.push(pageUrls.Secret);
+            setSubmitting(false);
           },
           onFailed: () => {
-            setSubmitting(false);
             setErrorMsg(t("Messages.UsernameOrPasswordInCorrect"));
+            setSubmitting(false);
           },
         });
       }}
