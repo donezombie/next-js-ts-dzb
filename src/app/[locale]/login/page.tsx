@@ -9,11 +9,9 @@ import { Button } from "components/ui/button";
 import CommonIcons from "components/CommonIcons";
 import Typography from "components/ui/Typography";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import pageUrls from "constants/pageUrls";
 
 export default function Login() {
-  const router = useRouter();
   const t = useTranslations();
   const { login } = useAuth();
   const [errorMsg, setErrorMsg] = useState("");
@@ -34,12 +32,11 @@ export default function Login() {
           username: values.username,
           password: values.password,
           onSuccess: () => {
-            router.push(pageUrls.Secret);
-            setSubmitting(false);
+            window.location.href = pageUrls.Secret;
           },
           onFailed: () => {
-            setErrorMsg(t("Messages.UsernameOrPasswordInCorrect"));
             setSubmitting(false);
+            setErrorMsg(t("Messages.UsernameOrPasswordInCorrect"));
           },
         });
       }}

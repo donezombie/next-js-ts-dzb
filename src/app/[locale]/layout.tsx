@@ -18,14 +18,14 @@ type Props = {
 export async function generateMetadata({
   params: { locale },
 }: Omit<Props, "children">): Promise<Metadata> {
-  const t = await getTranslator(locale, "Common");
+  const t = await getTranslator(locale, "Content");
   const formatter = await getFormatter(locale);
   const now = await getNow(locale);
   const timeZone = await getTimeZone(locale);
 
   return {
     title: t("Title"),
-    description: t("Description"),
+    // description: t("Description"),
     other: {
       currentYear: formatter.dateTime(now, { year: "numeric" }),
       timeZone: timeZone || "N/A",
@@ -46,7 +46,9 @@ export default function LocaleLayout({ children, params }: Props) {
     <html lang={locale}>
       <title>Next intl + Next JS 13.5.2</title>
       <body>
-        <Providers locale={locale} messages={messages}>{children}</Providers>
+        <Providers locale={locale} messages={messages}>
+          {children}
+        </Providers>
       </body>
     </html>
   );
