@@ -6,7 +6,7 @@ import FormikField from "components/CustomFields/FormikField";
 import InputField from "components/CustomFields/InputField";
 import * as Yup from "yup";
 import { Button } from "components/ui/button";
-import CommonIcons from "components/commonIcons";
+import CommonIcons from "components/CommonIcons";
 import Typography from "components/ui/Typography";
 import { useState } from "react";
 
