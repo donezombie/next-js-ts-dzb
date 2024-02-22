@@ -11,10 +11,14 @@
     "Password": "Mật khẩu",
     "Submit": "Xác nhận",
     "Error": "Lỗi {error}",
-    "NotFound": "Không tìm thấy"
+    "NotFound": "Không tìm thấy",
+    "GoTo": "Đi tới {link}"
   },
   "Locales": {
     "SwitchLocale": "Chuyển ngôn ngữ sang {locale, select, en {English} vi {Tiếng việt} other {Unknown}}"
+  },
+  "Pages": {
+    "Secret": "Trang cá nhân"
   },
   "Content": {
     "Title": "Demo Next JS 13.5.2 + Next Intl + Tailwind CSS"

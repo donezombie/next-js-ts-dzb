@@ -24,6 +24,15 @@ export default function PageContent() {
         {t("Common.Homepage")}
       </Typography>
 
+      <div className="mb-2">
+        <Link
+          href={pageUrls.Secret}
+          className="text-blue-500 hover:cursor-pointer"
+        >
+          {t("Common.GoTo", { link: t("Pages.Secret") })}
+        </Link>
+      </div>
+
       <div className="border p-2 rounded-md">
         {languages.map((lang) => {
           const nextPathName = `/${lang}${removeLangFromPathname(pathname)}`;
@@ -34,10 +43,10 @@ export default function PageContent() {
 
           return (
             <Typography component="p" className="text-sm" key={lang}>
-              <Link href={nextPathName} locale={lang} prefetch={false}>
+              <a href={nextPathName}>
                 {lang === Lang.en && "🇬🇧"} {lang === Lang.vi && "🇻🇳"}{" "}
                 {t("Locales.SwitchLocale", { locale: lang })}
-              </Link>
+              </a>
             </Typography>
           );
         })}

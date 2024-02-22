@@ -11,10 +11,14 @@
     "Password": "Password",
     "Submit": "Submit",
     "Error": "Error {error}",
-    "NotFound": "Not found"
+    "NotFound": "Not found",
+    "GoTo": "Go to {link}"
   },
   "Locales": {
     "SwitchLocale": "Switch lang to {locale, select, en {English} vi {Vietnamese} other {Unknown}}"
+  },
+  "Pages": {
+    "Secret": "Secret"
   },
   "Content": {
     "Title": "Demo Next JS 13.5.2 + Next Intl + Tailwind CSS"
